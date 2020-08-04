@@ -8,16 +8,17 @@
 # Kubernetes resources from your versionned controlled configuration
 in:
 - cmd: "cat"
-  args: ["example/manifests/resources_in.yaml"]
-out:
-- cmd: "cat"
-  args: ["example/manifests/resources_out.yaml"]
+  args: ["/Users/manu/dev/itm/k8s-deploy/k8s-files/*/*.yaml"]
+
+# out:
+# - cmd: "cat"
+#   args: ["example/manifests/resources_out.yaml"]
 
 # Kubernetes resources on your cluster
 # check only configmaps, deployments, services and ingresses in api namespace
-# out:
-# - cmd: "kubectl"
-#   args: ["get", "cm,deploy,svc,ing", "-o", "yaml", "-n", "api"]
+out:
+- cmd: "kubectl"
+  args: ["get", "cm,deploy,svc,ing", "-o", "yaml", "--all-namespaces"]
 
 # You can exclude some resource type from the comparison
 exclude:
